@@ -92,21 +92,22 @@ $age = $_GET["age"];
         <p> </p>
         <?php } ?>
     </div>
+
     <div>
     <h2>Snack 2</h2>
     <?php 
-    if((strlen($_GET["name"]) > 3) && is_numeric($_GET["age"]) && preg_match($re, $_GET["email"])){
+
+    if (strlen($_GET["name"]) > 3 && is_numeric($_GET["age"]) && strpos($_GET['email'], '@') && strpos($_GET['email'], '.')){
         $response = "Accesso riuscito";
     } else {
         $response = "Accesso negato";
     }
-    
+
     ?>
-    <p><?php echo $response ?> </p>
-    
-    
-    
-    
+    <p>Il nome inserito è: <?php echo $name ?> </p>
+    <p>L'età inserita è: <?php echo $age ?> </p>
+    <p>La tua mail è: <?php echo $email ?> </p>
+    <p>Esito: <?php echo $response ?> </p>
     </div>
 
 
