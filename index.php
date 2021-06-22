@@ -42,29 +42,77 @@ $results = [
 
 ];
 
+/* 
+Snack 2
+Passare come parametri GET name, mail e age e verificare 
+(cercando i metodi che non conosciamo nella documentazione) 
+che name sia più lungo di 3 caratteri, 
+che mail contenga un punto e una chiocciola e che age sia un numero. 
+Se tutto è ok stampare “Accesso riuscito”, altrimenti “Accesso negato”
+
+*/
+
+$name = $_GET["name"];
+//strlen
+
+$email = $_GET["email"];
+$re = '/[A-z]+@[A-z]+.[A-z]+/m';
+//
+
+$age = $_GET["age"];
+//is_numeric()
+
+
+
+
+
+
+
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Php Snacks</title>
 </head>
+
 <body>
-    <h2>Snack 1</h2>
+    <div>
+        <h2>Snack 1</h2>
         <?php 
         for($i = 0; $i < count($results); $i++ ){ 
             $result = $results[$i]
             ?>
-           <span> <?php echo $result["home_team"];?> <span> </span> <?php echo $result["away_team"]; ?> </span>
-           <span> <?php echo $result["result"]; ?> </span>
-            <p> </p>
-           <?php } ?>
+        <span> <?php echo $result["home_team"];?> <span> </span> <?php echo $result["away_team"]; ?> </span>
+        <span> <?php echo $result["result"]; ?> </span>
+        <p> </p>
+        <?php } ?>
+    </div>
+    <div>
+    <h2>Snack 2</h2>
+    <?php 
+    if((strlen($_GET["name"]) > 3) && is_numeric($_GET["age"]) && preg_match($re, $_GET["email"])){
+        $response = "Accesso riuscito";
+    } else {
+        $response = "Accesso negato";
+    }
+    
+    ?>
+    <p><?php echo $response ?> </p>
+    
+    
+    
+    
+    </div>
+
 
 
 
 
 </body>
+
 </html>
